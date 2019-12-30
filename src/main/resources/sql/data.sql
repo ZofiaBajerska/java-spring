@@ -1,5 +1,5 @@
 INSERT INTO PUBLIC.USER(ID, USERNAME, PASSWORD, IS_ADMIN, LOGIN_COUNT, LAST_LOGIN) VALUES
-('gene.rowe', 'Stephon123', 'King0808!', true, 0, null),
+('zosia', 'Zosia', '$2y$12$ahbeyriz.EdLQPdeI2NwX.dnbK/Gd/4tqyXfEAFzIVZrBUVoR2222', true, 0, null),
 ('owen.hane', 'Crawford212', 'Daniel0909@', false, 0, null),
 ('evans.hilpert', 'Kasandra232', 'Quigley0707#', true, 0, null),
 ('haylee.beer', 'Kimberly234', 'Greenholt0606$', false, 0, null),
