@@ -9,11 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class WebApplicationController {
 
-//    @GetMapping("/")
-//    public String root() {
-//        return "login";
-//    }
-
     @PostMapping("/login")
     public String login(@ModelAttribute String username){
         System.out.println(username);
