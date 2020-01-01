@@ -20,6 +20,7 @@ import javax.sql.DataSource;
 
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
     @Autowired
     private DataSource dataSource;
 
@@ -28,10 +29,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
-                .withDefaultSchema()
-                .withUser(User.withUsername("user")
-                        .password(passwordEncoder().encode("pass"))
-                        .roles("USER"));
+                .usersByUsernameQuery("SELECT username, password, 1 as enabled FROM user WHERE username=?")
+                .authoritiesByUsernameQuery("SELECT username, 'ROLE_USER' FROM user WHERE username=?");
+//                .withDefaultSchema()
+//                .withUser(User.withUsername("user")
+//                        .password(passwordEncoder().encode("pass"))
+//                        .roles("USER"));
     }
 
     @Override
@@ -51,13 +54,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .frameOptions()
                 .sameOrigin();
     }
+//
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 
-}
 
 //    @Autowired
 //    private UserService userService;
@@ -98,10 +101,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .withUser("user").password("password").roles("USER");
 //    }
 //
-//    @Bean
-//    public BCryptPasswordEncoder passwordEncoder(){
-//        return new BCryptPasswordEncoder(12);
-//    }
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder(12);
+    }
 //
 //    @Bean
 //    public DaoAuthenticationProvider authenticationProvider(){
@@ -115,4 +118,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.authenticationProvider(authenticationProvider());
 //    }
-//}
+}

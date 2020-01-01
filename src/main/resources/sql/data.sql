@@ -1,6 +1,6 @@
 INSERT INTO PUBLIC.USER(ID, USERNAME, PASSWORD, IS_ADMIN, LOGIN_COUNT, LAST_LOGIN) VALUES
-('zosia', 'Zosia', '$2y$12$ahbeyriz.EdLQPdeI2NwX.dnbK/Gd/4tqyXfEAFzIVZrBUVoR2222', true, 0, null),
-('owen.hane', 'Crawford212', 'Daniel0909@', false, 0, null),
+('zosia', 'Zosia', '$2a$12$U3AJ6n.5VoiUmw3nF43ZweYtJbCpOgESeR7FCajiaI.0d0ciqvf5q', true, 0, null),
+('owen.hane', 'Crawford212', '$2a$12$Zax1EBeqNmx8Bttu3sY/vOwixcSV.xa58AfjOvtiy5EelrA9eYbkO', true, 0, null),
 ('evans.hilpert', 'Kasandra232', 'Quigley0707#', true, 0, null),
 ('haylee.beer', 'Kimberly234', 'Greenholt0606$', false, 0, null),
 ('amy.schaefer', 'Graham124', 'Connelly0505%', false, 0, null),
