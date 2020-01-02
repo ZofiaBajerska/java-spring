@@ -41,8 +41,8 @@
                             <td th:text="${user.is_admin}">is_admin</td>
                             <td th:text="${user.login_count}">login_count</td>
                             <td th:text="${user.last_login}">last_login</td>
-                            <td><button onclick="editUser();return false;" style="width: 80px">Edit</button></td>
-                            <td><button onclick="deleteUser();return false;" style="width: 80px">Delete</button></td>
+                            <td><a th:href="@{'/user/edit/' + ${user.id}}">Edit</a></td>
+
                         </tr>
                     </tbody>
                 </table>

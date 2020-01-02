@@ -3,6 +3,7 @@ package spring_homework.homework;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,6 +16,7 @@ import spring_homework.homework.model.User;
 import spring_homework.homework.service.UserService;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Controller
@@ -60,7 +62,7 @@ public class WebApplicationController {
         return "index";
     }
 
-    @RequestMapping(value= "/index/edit/{id}", method = RequestMethod.GET)
+    @RequestMapping(value= {"/index/edit/{id}", "/user/edit/{id}"}, method = RequestMethod.GET)
     public String editUser(@PathVariable("id") String id, ModelMap model ) {
         User user = userService.findById(id);
         user.setPassword("");
@@ -69,10 +71,12 @@ public class WebApplicationController {
     }
 
     @RequestMapping(value="/update",method=RequestMethod.POST)
-    public String saveUser(@ModelAttribute("edituser") User edituser, BindingResult result, ModelMap model) {
+    public String saveUser(@ModelAttribute("edituser") User edituser, BindingResult result,
+                           ModelMap model) {
         if (result.hasErrors()) {
             return "edit";
         }
+
         edituser.setPassword(passwordEncoder.encode(edituser.getPassword()));
         userService.save(edituser);
         return "redirect:/index";
