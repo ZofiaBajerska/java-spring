@@ -21,18 +21,7 @@
                         <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
                     </ul>
                 </div>
-                <div class="pop-up" id="add">
-                    <div class="pop-up-content">
-                        <form class="add-form" style="align-self: center">
-                            <label for="user-name">Username</label>
-                            <input id="user-name" placeholder="sznur"/>
-                            <label for="password">Password</label>
-                            <input id="password" type="String" placeholder="Annna123!"/>
-                            <button onclick="addUser();return false;" style="width: 80px">Add User</button>
-                            <button onclick="clearDontAdd();return false" style="width: 80px">Abort adding</button>
-                        </form>
-                    </div>
-                </div>
+                <a th:href="@{'/add/'}">Add new user</a>
 
                 <div id="found" class="collapse found-collapse">
                     <ul class="nav navbar-nav">
@@ -58,7 +47,7 @@
                             <td th:text="${user.username}">username</td>
                             <td th:text="${user.is_admin}">is_admin</td>
                             <td th:text="${user.login_count}">login_count</td>
-                            <td th:text="${#calendars.format(user.last_login,'dd/MMM/yyyy HH/mm/ss')}">last_login</td>
+                            <td th:text="${#calendars.format(user.last_login,'dd/MMM/yyyy HH:mm:ss ')}">last_login</td>
                             <td><a th:href="@{'/index/edit/' + ${user.id}}">Edit</a></td>
                             <td><a th:href="@{'/index/delete/' + ${user.id}}">Delete</a></td>
 

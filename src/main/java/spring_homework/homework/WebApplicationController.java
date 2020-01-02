@@ -38,6 +38,22 @@ public class WebApplicationController {
         return "user";
     }
 
+    @GetMapping("/add")
+    public String addUser(Model model){
+        model.addAttribute("user", new User());
+        return "add";
+    }
+
+    @RequestMapping(value="/adduser",method=RequestMethod.POST)
+    public String addNewUser(@ModelAttribute("user") User user, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "add";
+        }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userService.add(user);
+        return "redirect:/index";
+    }
+
     @GetMapping("/index")
     public String getAllUsersList(Model model){
         model.addAttribute("users", userService.findAll());
@@ -59,6 +75,12 @@ public class WebApplicationController {
         }
         edituser.setPassword(passwordEncoder.encode(edituser.getPassword()));
         userService.save(edituser);
+        return "redirect:/index";
+    }
+
+    @RequestMapping(value= "/index/delete/{id}", method = RequestMethod.GET)
+    public String deleteUser(@PathVariable("id") String id, ModelMap model ) {
+        userService.delete(id);
         return "redirect:/index";
     }
 }

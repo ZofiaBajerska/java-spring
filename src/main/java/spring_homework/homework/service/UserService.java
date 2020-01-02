@@ -7,9 +7,11 @@ import java.util.List;
 public interface UserService {
 
 
-    User save(User task);
+    User save(User user);
 
-    Boolean delete(String id);
+    boolean add(User user);
+
+    boolean delete(String id);
 
     User findById(String id);
 

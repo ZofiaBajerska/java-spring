@@ -10,16 +10,11 @@
         <link rel="stylesheet" type="text/css"
               th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
 
-        <title>Edytowanie</title>
+        <title>Dodawanie</title>
     </head>
     <body>
 
-        <form action="#" th:action="@{/update}" th:object="${edituser}" method="post">
-            <div class="form-control">
-
-                <input type="hidden" id="name" th:field="*{id}"/>
-            </div>
-
+        <form action="#" th:action="@{/adduser}" th:object="${user}" method="post">
             <div class="form-control">
                 <label class="header">Username <span>:</span></label>
                 <input id="username" th:field="*{username}" minlength="4" required/>
@@ -36,15 +31,10 @@
                 <input id="is_admin" th:field="*{is_admin}"/>
                 <div class="clear"></div>
             </div>
-            <div class="form-control">
-                <label class="enquiry">Login_count <span>:</span></label>
-                <input id="login_count" th:field="*{login_count}"/>
-                <div class="clear"></div>
-            </div>
 
             <div class="form-control">
                 <input type="reset" class="reset" value="Reset"/>
-                <input type="submit" class="register" value="save changes"/>
+                <input type="submit" class="register" value="Add"/>
                 <div class="clear"></div>
             </div>
         </form>
