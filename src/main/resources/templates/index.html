@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<!--   xmlns:sec="http://www.thymeleaf.org/extras/spring-security">-->
     <head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -35,11 +36,12 @@
 
                 <div id="found" class="collapse found-collapse">
                     <ul class="nav navbar-nav">
-                        <li sec:authorize="isAuthenticated()"><a>Found</a></li>
+                        <li sec:authorize="isAuthenticated()"><a>Find</a></li>
                     </ul>
                 </div>
             </nav>
-
+<!--            <span th:text ="${#authentication.getPrincipal().getUser().getFirstName()}"></span>-->
+            <div sec:authorize="isAuthenticated()">Authenticated as <span sec:authentication="name"></span></div>
             <div class="main-content">
                 <table class="table table-bordered  table-striped table-responsive">
                     <thead>

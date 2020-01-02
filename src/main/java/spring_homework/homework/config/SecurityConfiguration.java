@@ -25,7 +25,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .usersByUsernameQuery("SELECT username, password, 1 as enabled FROM user WHERE username=?")
                 .authoritiesByUsernameQuery("SELECT username, " +
                         " CASE WHEN is_admin = false then 'ROLE_USER' "+
-                        " ELSE 'ROLE_ADMIN' FROM user WHERE username=?");
+                        " ELSE 'ROLE_ADMIN' END FROM user WHERE username=?");
 
     }
 
@@ -35,10 +35,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         httpSecurity.authorizeRequests()
                 .antMatchers("/h2-console/**")
                 .permitAll()
+                .antMatchers("/index/**").hasRole("ADMIN")
+                .antMatchers("/user/**").hasRole("USER")
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin();
+                .formLogin().defaultSuccessUrl("/index");
 
         httpSecurity.csrf()
                 .ignoringAntMatchers("/h2-console/**");

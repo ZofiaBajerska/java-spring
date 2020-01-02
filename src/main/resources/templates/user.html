@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!--        <link href="styles/styles.css" rel="stylesheet">-->
+        <link rel="stylesheet" type="text/css"
+              th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+
+        <title>Logowanie</title>
+    </head>
+    <body>
+
+        <div class="page-inside">
+            <nav>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+                    </ul>
+                </div>
+                <div class="pop-up" id="add">
+                    <div class="pop-up-content">
+                        <form class="add-form" style="align-self: center">
+                            <label for="user-name">Username</label>
+                            <input id="user-name" placeholder="sznur"/>
+                            <label for="password">Password</label>
+                            <input id="password" type="String" placeholder="Annna123!"/>
+                            <button onclick="addUser();return false;" style="width: 80px">Add User</button>
+                            <button onclick="clearDontAdd();return false" style="width: 80px">Abort adding</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="found" class="collapse found-collapse">
+                    <ul class="nav navbar-nav">
+                        <li sec:authorize="isAuthenticated()"><a>Found</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="main-content">
+                <table class="table table-bordered  table-striped table-responsive">
+                    <thead>
+                        <tr class="btn-info">
+                            <th>Id</th>
+                            <th>Username</th>
+                            <th>Is_admin</th>
+                            <th>Login_count</th>
+                            <th>Last_login</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="user : ${users}">
+                            <td th:text="${user.id}">id</td>
+                            <td th:text="${user.username}">username</td>
+                            <td th:text="${user.is_admin}">is_admin</td>
+                            <td th:text="${user.login_count}">login_count</td>
+                            <td th:text="${user.last_login}">last_login</td>
+                            <td align="center">
+                                <a th:href="@{/task/edit/{id}(id=${user.id})}">
+                                            <span class="glyphicon glyphicon-edit" data-toggle="tooltip"
+                                                  data-placement="top" title="Edit Task"></span></a>
+                                &nbsp; &nbsp;
+                                <a data-toggle="modal" data-target="#modal-toTrash"
+                                   th:attr="data-target='#modal-toTrash'+${user.id}">
+                                            <span class="glyphicon glyphicon-trash" data-toggle="tooltip"
+                                                  data-placement="top" title="Sent to Trash Box"></span></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script type="text/javascript"
+                th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+        <script type="text/javascript"
+                th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+
+    </body>
+</html>
