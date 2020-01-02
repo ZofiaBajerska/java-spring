@@ -10,34 +10,35 @@
         <link rel="stylesheet" type="text/css"
               th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
 
-        <title>Edytowanie</title>
+        <title>Find</title>
     </head>
     <body>
 
-        <form action="#" th:action="@{/update}" th:object="${edituser}" method="post">
+        <form action="#" th:action="@{/find}" th:object="${finduser}" method="post">
+
             <div class="form-control">
                 <label class="header">Username <span>:</span></label>
-                <input id="username" th:field="*{username}" minlength="4" required/>
+                <input id="username" th:field="*{username}" minlength="4"/>
             </div>
 
             <div class="form-control">
-                <label class="enquiry">Password <span>:</span></label>
-                <input type="password" id="password" th:field="*{password}" minlength="6" required/>
-                <div class="clear"></div>
-            </div>
-            <div class="form-control" sec:authorize="hasRole('ROLE_ADMIN')">
                 <label class="enquiry">Is_admin <span>:</span></label>
                 <input id="is_admin" th:field="*{is_admin}"/>
                 <div class="clear"></div>
             </div>
-            <div class="form-control" sec:authorize="hasRole('ADMIN')">
+
+            <div class="form-control">
                 <label class="enquiry">Login_count <span>:</span></label>
                 <input id="login_count" th:field="*{login_count}"/>
                 <div class="clear"></div>
             </div>
+<!--            <div class="form-control">-->
+<!--                <label class="enquiry">Last_login <span>:</span></label>-->
+<!--                <input id="last_login" th:field="*{last_login}"/>-->
+<!--                <div class="clear"></div>-->
+<!--            </div>-->
             <div class="form-control">
-                <input type="reset" class="reset" value="Reset"/>
-                <input type="submit" class="register" value="Save changes"/>
+                <input type="submit" class="register" value="Find"/>
                 <div class="clear"></div>
             </div>
         </form>

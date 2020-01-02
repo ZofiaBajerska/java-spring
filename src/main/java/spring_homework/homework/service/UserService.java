@@ -19,5 +19,7 @@ public interface UserService {
 
     List<User> findAll();
 
+    public Iterable<User> findByExample(User user);
+
     void updateLoginData(String username);
 }

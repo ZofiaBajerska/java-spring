@@ -62,6 +62,22 @@ public class WebApplicationController {
         return "index";
     }
 
+    @GetMapping("/findform")
+    public String findForm(Model model){
+        model.addAttribute("finduser", new User());
+        return "find";
+    }
+
+    @RequestMapping(value= "/find", method = RequestMethod.POST)
+    public String findUser(@ModelAttribute("finduser") User finduser, BindingResult result, ModelMap model ) {
+        if (result.hasErrors()) {
+            return "find";
+        }
+        Iterable<User> it = userService.findByExample(finduser);
+        model.addAttribute("users", it);
+        return "index";
+    }
+
     @RequestMapping(value= {"/index/edit/{id}", "/user/edit/{id}"}, method = RequestMethod.GET)
     public String editUser(@PathVariable("id") String id, ModelMap model ) {
         User user = userService.findById(id);

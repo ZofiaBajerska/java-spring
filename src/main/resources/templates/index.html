@@ -23,7 +23,9 @@
 
                 <div id="found" class="collapse found-collapse">
                     <ul class="nav navbar-nav">
-                        <li sec:authorize="isAuthenticated()"><a>Find</a></li>
+                        <td><a th:href="@{'/findform'}">Find</a></td>
+
+                        <td><a th:href="@{'/index'}">Show all</a></td>
                     </ul>
                 </div>
             </nav>

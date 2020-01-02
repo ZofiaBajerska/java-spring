@@ -1,6 +1,9 @@
 package spring_homework.homework.service;
 
+import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -73,7 +76,10 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-
+    @Override
+    public Iterable<User> findByExample(User user) {
+        return userRepository.findAll(Example.of(user, ExampleMatcher.matchingAny()));
+    }
 
 
 }
