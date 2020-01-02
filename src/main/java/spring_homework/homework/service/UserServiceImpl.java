@@ -34,11 +34,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User update(User task) {
-        return userRepository.save(task);
-    }
-
-    @Override
     public User findById(String id) {
         return userRepository.findById(id);
     }

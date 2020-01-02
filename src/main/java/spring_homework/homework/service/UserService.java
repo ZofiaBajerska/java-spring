@@ -11,8 +11,6 @@ public interface UserService {
 
     Boolean delete(String id);
 
-    User update(User task);
-
     User findById(String id);
 
     User findByUsername(String username);
