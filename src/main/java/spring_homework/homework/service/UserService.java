@@ -17,4 +17,5 @@ public interface UserService {
 
     List<User> findAll();
 
+    void updateLoginData(String username);
 }

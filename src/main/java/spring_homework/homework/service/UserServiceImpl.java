@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import spring_homework.homework.model.User;
 import spring_homework.homework.repository.UserRepository;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -20,8 +22,8 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public User save(User task) {
-        return userRepository.save(task);
+    public User save(User user) {
+        return userRepository.save(user);
     }
 
     @Override
@@ -47,6 +49,18 @@ public class UserServiceImpl implements UserService {
     @ModelAttribute("users")
     public List<User> findAll() {
         return (List<User>) userRepository.findAll();
+    }
+
+    @Override
+    public void updateLoginData(String username){
+        User user = findByUsername(username);
+        if (user !=null){
+            user.setLogin_count(user.getLogin_count()+1);
+            user.setLast_login(Timestamp.valueOf(LocalDateTime.now()));
+
+            save(user);
+
+        }
     }
 
 
