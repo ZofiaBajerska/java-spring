@@ -44,6 +44,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findByUsername(String username){
+        return  userRepository.findByUsername(username);
+    }
+
+    @Override
     @ModelAttribute("users")
     public List<User> findAll() {
         return (List<User>) userRepository.findAll();

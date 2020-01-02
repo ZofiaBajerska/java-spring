@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface UserService {
 
+
     User save(User task);
 
     Boolean delete(String id);
@@ -13,6 +14,8 @@ public interface UserService {
     User update(User task);
 
     User findById(String id);
+
+    User findByUsername(String username);
 
     List<User> findAll();
 

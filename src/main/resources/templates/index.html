@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-<!--   xmlns:sec="http://www.thymeleaf.org/extras/spring-security">-->
+    <!--   xmlns:sec="http://www.thymeleaf.org/extras/spring-security">-->
     <head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -40,8 +40,6 @@
                     </ul>
                 </div>
             </nav>
-<!--            <span th:text ="${#authentication.getPrincipal().getUser().getFirstName()}"></span>-->
-            <div sec:authorize="isAuthenticated()">Authenticated as <span sec:authentication="name"></span></div>
             <div class="main-content">
                 <table class="table table-bordered  table-striped table-responsive">
                     <thead>
@@ -61,82 +59,18 @@
                             <td th:text="${user.is_admin}">is_admin</td>
                             <td th:text="${user.login_count}">login_count</td>
                             <td th:text="${user.last_login}">last_login</td>
-                            <td align="center">
-                                <a th:href="@{/task/edit/{id}(id=${user.id})}">
-                                            <span class="glyphicon glyphicon-edit" data-toggle="tooltip"
-                                                  data-placement="top" title="Edit Task"></span></a>
-                                &nbsp; &nbsp;
-                                <a data-toggle="modal" data-target="#modal-toTrash"
-                                   th:attr="data-target='#modal-toTrash'+${user.id}">
-                                            <span class="glyphicon glyphicon-trash" data-toggle="tooltip"
-                                                  data-placement="top" title="Sent to Trash Box"></span></a>
-                            </td>
-                            <!--start send to trash modal-->
-                            <!--                            <div class="modal modal-toTrash" th:id="modal-toTrash+${task.id}">-->
-                            <!--                                <div class="modal-dialog">-->
-                            <!--                                    <div class="modal-content">-->
-                            <!--                                        <div class="modal-header">-->
-                            <!--                                            <button type="button" class="close" data-dismiss="modal"-->
-                            <!--                                                    aria-hidden="true">×-->
-                            <!--                                            </button>-->
-                            <!--                                            <h3 id="myModalLabel">Delete Confirmation</h3>-->
-                            <!--                                        </div>-->
-                            <!--                                        <div class="modal-body">-->
-                            <!--                                            <p class="error-text"><strong>Are you sure you want to-->
-                            <!--                                                delete this task ?</strong></p>-->
-                            <!--                                        </div>-->
-                            <!--                                        <div class="modal-footer">-->
-                            <!--                                            <button class="btn " data-dismiss="modal" aria-hidden="true">-->
-                            <!--                                                Cancel-->
-                            <!--                                            </button>-->
-                            <!--                                            <a th:href="@{/task/trash/{id}(id=${task.id})}">-->
-                            <!--                                                <span class="btn btn-danger" value="delete">Delete</span></a>-->
-
-                            <!--                                        </div>-->
-                            <!--                                    </div>-->
-                            <!--                                    &lt;!&ndash; /.modal-content &ndash;&gt;-->
-                            <!--                                </div>-->
-                            <!--                                &lt;!&ndash; /.modal-dialog &ndash;&gt;-->
-                            <!--                            </div>-->
-                            <!--                            &lt;!&ndash;end send to trash modal&ndash;&gt;-->
+                            <td><button onclick="editUser();return false;" style="width: 80px">Edit</button></td>
+                            <td><button onclick="deleteUser();return false;" style="width: 80px">Delete</button></td>
                         </tr>
 
                     </tbody>
                 </table>
             </div>
-
-            <!--        <nav class="navbar navbar-inverse navbar-fixed-top">-->
-            <!--            <div class="container">-->
-            <!--                <div class="navbar-header">-->
-            <!--                    <button type="button" class="navbar-toggle collapsed"-->
-            <!--                            data-toggle="collapse" data-target="#navbar" aria-expanded="false"-->
-            <!--                            aria-controls="navbar">-->
-            <!--                        <span class="sr-only">Toggle navigation</span> <span-->
-            <!--                            class="icon-bar"></span> <span class="icon-bar"></span> <span-->
-            <!--                            class="icon-bar"></span>-->
-            <!--                    </button>-->
-            <!--                    <a class="navbar-brand" href="#" th:href="@{/static}">Registration and-->
-            <!--                        Login Module</a>-->
-            <!--                </div>-->
-
-            <!--            </div>-->
-            <!--        </nav>-->
-
-            <!--        <br>-->
-            <!--        <br>-->
-            <!--        <div class="container">-->
-            <!--            <h2>User Registration and Login Module using Spring Boot, Spring-->
-            <!--                MVC, Spring Security, JPA/Hibernate and Thymeleaf</h2>-->
-
-            <!--            <p>-->
-            <!--                Welcome <span sec:authentication="principal.username">User</span>-->
-            <!--            </p>-->
-            <!--        </div>-->
         </div>
-            <script type="text/javascript"
-                    th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
-            <script type="text/javascript"
-                    th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+        <script type="text/javascript"
+                th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+        <script type="text/javascript"
+                th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
 
     </body>
 </html>
