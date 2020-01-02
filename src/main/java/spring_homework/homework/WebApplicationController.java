@@ -26,16 +26,16 @@ public class WebApplicationController {
 //        System.out.println(username);
 //        return "index";
 //    }
-    @GetMapping("/")
-    public String index(Model model) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (!(auth instanceof AnonymousAuthenticationToken))
-            return "index";
-
-        // if it is not authenticated, then go to the index...
-        // other things ...
-        return "login";
-    }
+//    @GetMapping("/")
+//    public String index(Model model) {
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        if (!(auth instanceof AnonymousAuthenticationToken))
+////            return "index";
+//
+//        // if it is not authenticated, then go to the index...
+//        // other things ...
+//        return "login";
+//    }
 
     @GetMapping("/login")
     public String login(Model model) {
