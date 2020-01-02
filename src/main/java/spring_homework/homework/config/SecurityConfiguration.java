@@ -23,7 +23,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .usersByUsernameQuery("SELECT username, password, 1 as enabled FROM user WHERE username=?")
-                .authoritiesByUsernameQuery("SELECT username, 'ROLE_USER' FROM user WHERE username=?");
+                .authoritiesByUsernameQuery("SELECT username, " +
+                        " CASE WHEN is_admin = false then 'ROLE_USER' "+
+                        " ELSE 'ROLE_ADMIN' FROM user WHERE username=?");
 
     }
 
