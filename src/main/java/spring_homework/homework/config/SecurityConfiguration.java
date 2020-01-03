@@ -25,13 +25,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .dataSource(dataSource)
                 .usersByUsernameQuery("SELECT username, password, 1 as enabled FROM user WHERE username=?")
                 .authoritiesByUsernameQuery("SELECT username, " +
-                        " CASE WHEN is_admin = false then 'ROLE_USER' "+
+                        " CASE WHEN is_admin = false then 'ROLE_USER' " +
                         " ELSE 'ROLE_ADMIN' END FROM user WHERE username=?");
 
     }
 
     @Bean
-    public AuthenticationSuccessHandler myAuthenticationSuccessHandler(){
+    public AuthenticationSuccessHandler myAuthenticationSuccessHandler() {
         return new MySimpleUrlAuthenticationSuccessHandler();
     }
 
@@ -56,7 +56,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder(){
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(12);
     }
 

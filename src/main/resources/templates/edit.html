@@ -13,6 +13,7 @@
     </head>
     <body>
         <form action="#" th:action="@{/update}" th:object="${edituser}" method="post">
+
             <div class="form-control">
                 <label class="header">Username <span>:</span></label>
                 <input id="username" th:field="*{username}" minlength="4" required/>

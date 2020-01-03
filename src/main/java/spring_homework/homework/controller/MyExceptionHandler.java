@@ -6,13 +6,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import spring_homework.homework.model.MyException;
 
-
 @RestControllerAdvice
 public class MyExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public MyException handleException(Exception ex){
+    public MyException handleException(Exception ex) {
 
         return new MyException(ex.getMessage());
     }
