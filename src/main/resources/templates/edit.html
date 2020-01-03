@@ -37,6 +37,9 @@
                 <div class="clear"></div>
             </div>
             <div class="form-control">
+                <input type="hidden" id="last_login" th:field="*{last_login}"/>
+            </div>
+            <div class="form-control">
                 <a th:href="@{'/index'}">Cancel</a>
                 <input type="submit" class="register" value="Save changes"/>
                 <div class="clear"></div>
