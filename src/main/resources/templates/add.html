@@ -6,31 +6,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" type="text/css"
               th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
-
-        <title>Dodawanie</title>
+        <title>Add</title>
     </head>
     <body>
-
         <form action="#" th:action="@{/adduser}" th:object="${user}" method="post">
             <div class="form-control">
                 <label class="header">Username <span>:</span></label>
                 <input id="username" th:field="*{username}" minlength="4" required/>
             </div>
-
             <div class="form-control">
                 <label class="enquiry">Password <span>:</span></label>
                 <input type="password" id="password" th:field="*{password}" minlength="6" required/>
                 <div class="clear"></div>
             </div>
-
             <div class="form-control">
                 <label class="enquiry">Is_admin <span>:</span></label>
                 <input id="is_admin" th:field="*{is_admin}"/>
                 <div class="clear"></div>
             </div>
-
             <div class="form-control">
-                <a th:href="@{'/index'}" >Cancel</a>
+                <a th:href="@{'/index'}">Cancel</a>
                 <input type="submit" class="register" value="Add"/>
                 <div class="clear"></div>
             </div>
@@ -39,6 +34,5 @@
                 th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
         <script type="text/javascript"
                 th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
-
     </body>
 </html>

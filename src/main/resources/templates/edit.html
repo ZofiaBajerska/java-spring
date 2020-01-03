@@ -9,11 +9,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" type="text/css"
               th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
-
-        <title>Edytowanie</title>
+        <title>Edit</title>
     </head>
     <body>
-
         <form action="#" th:action="@{/update}" th:object="${edituser}" method="post">
             <div class="form-control">
                 <label class="header">Username <span>:</span></label>
@@ -36,7 +34,7 @@
                 <div class="clear"></div>
             </div>
             <div class="form-control">
-                <a th:href="@{'/index'}" >Cancel</a>
+                <a th:href="@{'/index'}">Cancel</a>
                 <input type="submit" class="register" value="Save changes"/>
                 <div class="clear"></div>
             </div>
@@ -45,6 +43,5 @@
                 th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
         <script type="text/javascript"
                 th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
-
     </body>
 </html>

@@ -7,11 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" type="text/css"
               th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
-
         <title>Index</title>
     </head>
     <body>
-
         <div class="page-inside">
             <nav>
                 <div id="navbar" class="collapse navbar-collapse">
@@ -20,7 +18,6 @@
                     </ul>
                 </div>
                 <a th:href="@{'/add/'}">Add new user</a>
-
                 <div id="found" class="collapse found-collapse">
                     <ul class="nav navbar-nav">
                         <td><a th:href="@{'/findform'}">Find</a></td>
@@ -49,11 +46,8 @@
                             <td th:text="${user.login_count}">login_count</td>
                             <td th:text="${#calendars.format(user.last_login,'dd/MMM/yyyy HH:mm:ss ')}">last_login</td>
                             <td><a th:href="@{'/index/edit/' + ${user.id}}">Edit</a></td>
-
                             <td><a th:href="@{'/index/delete/' + ${user.id}}">Delete</a></td>
-
                         </tr>
-
                     </tbody>
                 </table>
             </div>
@@ -62,6 +56,5 @@
                 th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
         <script type="text/javascript"
                 th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
-
     </body>
 </html>
